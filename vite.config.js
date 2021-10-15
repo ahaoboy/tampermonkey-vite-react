@@ -37,13 +37,13 @@ module.exports = defineConfig({
   build: {
     write: false,
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      // external: ['react', 'react-dom'],
       output: {
         format: 'iife',
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
+        // globals: {
+        //   react: 'React',
+        //   'react-dom': 'ReactDOM',
+        // },
       },
     },
   },

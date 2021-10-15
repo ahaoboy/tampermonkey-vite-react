@@ -2,10 +2,14 @@ const path = require('path');
 const { defineConfig } = require('vite');
 const styleImport = require('vite-plugin-style-import');
 const reqUMDInject = require('./plugins/require-umd-inject');
+const vueJsx = require('@vitejs/plugin-vue-jsx');
+const vue = require('@vitejs/plugin-vue');
 
 // https://vitejs.dev/config/
 module.exports = defineConfig({
   plugins: [
+    vue(),
+    vueJsx(),
     styleImport.default({
       libs: [
         {
@@ -37,13 +41,8 @@ module.exports = defineConfig({
   build: {
     write: false,
     rollupOptions: {
-      external: ['react', 'react-dom'],
       output: {
         format: 'iife',
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
       },
     },
   },

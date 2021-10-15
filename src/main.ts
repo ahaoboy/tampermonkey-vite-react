@@ -1,18 +1,22 @@
-import ReactDOM from 'react-dom';
+import { createApp } from "vue";
+import App from "./index";
+import { inject } from "./utils/dom-inject";
+import styles from './style.module.scss';
 
-import App from './index';
-import { inject } from './utils/dom-inject';
-
+console.log('app', App, styles)
 inject(
   () => {
-    const group = document.querySelector('body');
+    const group = document.querySelector("body");
     if (group == null) return null;
 
-    const ct = document.createElement('div');
+    const ct = document.createElement("div");
+    ct.id = 'vue'
+    ct.classList.add(styles.app)
     group.append(ct);
     return ct;
   },
-  el => {
-    ReactDOM.render(React.createElement(App), el);
+  (el) => {
+    const app = createApp(App);
+    app.mount(el);
   }
 );

@@ -1,21 +1,15 @@
-import ReactDOM from 'react-dom';
+import { createApp } from "vue";
+import App from "./App.vue";
+import styles from "./main.scss";
 
-import App from './index';
-import { inject } from './utils/dom-inject';
-console.log('-====111122222222')
-inject(
-  () => {
-    console.log('-====1111')
-    const group = document.querySelector('body');
-    if (group == null) return null;
+import { sample } from "lodash-es";
+console.log("styles222233333", styles, App);
 
-    const ct = document.createElement('div');
-    ct.id = 'react'
-    group.append(ct);
-    return ct;
-  },
-  el => {
-    console.log('-====11133331')
-    ReactDOM.render(React.createElement(App), el);
-  }
-);
+window.addEventListener("load", () => {
+  console.log(sample([1, 2, 3]));
+  const div = document.createElement("div");
+  div.id = "vue";
+  document.body.appendChild(div);
+  console.log("styles2222", styles, div);
+  createApp(App).mount(div);
+});

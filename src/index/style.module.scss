@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+}
+
+:global(.zent-btn-group) .button:global(.zent-btn) {
+  height: 28px;
+  line-height: 28px;
+  font-size: 12px;
+  padding: 0 6px;
+}
